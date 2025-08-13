@@ -1,0 +1,127 @@
+<div class="h-full w-full">
+
+    <div class="flex flex-row w-full items-center gap-x-4">
+        <input class="border border-gray-300 rounded-full px-4 py-2 h-auto w-full" type="text" value=""
+            placeholder="Buscar producto">
+
+        <button class="rounded-full bg-primary text-white text-lg px-6 py-2">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+            </svg>
+        </button>
+    </div>
+
+    <div class="flex flex-col gap-y-4 mt-4 w-full">
+
+        <div class="flex flex-wrap items-center gap-2 sm:gap-4">
+            <span class="w-full sm:w-auto text-text text-md 2xl:text-lg">Categorías:</span>
+          
+            <span
+              class="flex items-center gap-x-2 px-4 py-1 bg-primary text-white rounded-full cursor-pointer text-sm sm:text-base">
+              Todos
+            </span>
+          
+            <span
+              class="flex items-center gap-x-2 px-4 py-1 bg-gray-200 text-subtext rounded-full cursor-pointer text-sm sm:text-base">
+              <img class="w-6 h-6 sm:w-8 sm:h-8" src="assets/img/cafe.svg" alt="img_cafe" />
+              Cafés
+            </span>
+          
+            <span
+              class="flex items-center gap-x-2 px-4 py-1 bg-gray-200 text-subtext rounded-full cursor-pointer text-sm sm:text-base">
+              <img class="w-6 h-6 sm:w-8 sm:h-8" src="assets/img/late.svg" alt="img_late" />
+              Lattes
+            </span>
+          
+            <span
+              class="flex items-center gap-x-2 px-4 py-1 bg-gray-200 text-subtext rounded-full cursor-pointer text-sm sm:text-base">
+              <img class="w-6 h-6 sm:w-8 sm:h-8" src="assets/img/te.svg" alt="img_te" />
+              Té
+            </span>
+          
+            <span
+              class="flex items-center gap-x-2 px-4 py-1 bg-gray-200 text-subtext rounded-full cursor-pointer text-sm sm:text-base">
+              <img class="w-6 h-6 sm:w-8 sm:h-8" src="assets/img/tisana.svg" alt="img_tisana" />
+              Tisanas
+            </span>
+          </div>
+          
+
+        <div class="grid grid-cols-1 2xl:grid-cols-2 gap-4">
+            <!-- Product Card Example -->
+            <div (click)="abrirProducto()" class="w-full h-28 xl:h-48 border rounded-lg bg-white items-center flex flex-row gap-x-4 cursor-pointer">
+
+                <div
+                    class="h-24 w-24 xl:w-40 xl:h-40 ml-2 xl:ml-5 bg-primary rounded-lg items-center justify-center flex">
+                    <img src="assets/img/bebida1.png" alt="Product Image" class="w-16 h-20 xl:w-24 xl:h-36">
+                </div>
+
+                <div class="flex flex-col gap-y-4 xl:gap-y-6 2xl:gap-y-8 flex-1 h-24 xl:h-36 2xl:h-40">
+                    <h3 class="text-md 2xl:text-lg font-normal text-subtext">Nombre del Producto</h3>
+                    <p class="text-text text-lg 2xl:text-xl">$Precio</p>
+                </div>
+
+                <div class="h-24 xl:h-36 2xl:h-40 flex flex-col gap-y-1 2xl:gap-y-10 mr-2 2xl:mr-5">
+                    <span class="text-text justify-end flex h-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z" />
+                        </svg>
+                    </span>
+
+                    <span class="px-4 py-1 bg-primary text-white rounded-full">
+                        Frappe
+                    </span>
+
+                </div>
+
+            </div>
+
+            <div  (click)="abrirProducto()" class="w-full h-28 xl:h-48 border rounded-lg bg-white items-center flex flex-row gap-x-4 cursor-pointer">
+
+                <div
+                    class="h-24 w-24 xl:w-40 xl:h-40 ml-2 xl:ml-5 bg-primary rounded-lg items-center justify-center flex">
+                    <img src="assets/img/bebida1.png" alt="Product Image" class="w-16 h-20 xl:w-24 xl:h-36">
+                </div>
+
+                <div class="flex flex-col gap-y-4 xl:gap-y-6 2xl:gap-y-8 flex-1 h-24 xl:h-36 2xl:h-40">
+                    <h3 class="text-md 2xl:text-lg font-normal text-subtext">Nombre del Producto</h3>
+                    <p class="text-text text-lg 2xl:text-xl">$Precio</p>
+                </div>
+
+                <div class="h-24 xl:h-36 2xl:h-40 flex flex-col gap-y-1 2xl:gap-y-10 mr-2 2xl:mr-5">
+                    <span class="text-text justify-end flex h-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z" />
+                        </svg>
+                    </span>
+
+                    <span class="px-4 py-1 bg-primary text-white rounded-full">
+                        Frappe
+                    </span>
+
+                </div>
+
+            </div>
+
+            <!-- Repeat product cards as needed -->
+        </div>
+
+    </div>
+    <!-- <div class="border rounded-lg p-4 bg-white shadow-sm hover:shadow-md transition-shadow">
+    <img src="assets/img/bebida1.png" alt="Product Image" class="w-full h-48 object-cover rounded-t-lg">
+    <h3 class="text-xl font-medium mt-2">Nombre del Producto</h3>
+    <p class="text-gray-600 mt-1">$Precio</p>
+    <button class="mt-2 w-full bg-primary text-white py-1 rounded-md">Agregar al carrito</button>
+</div>
+<div class="border rounded-lg p-4 bg-white shadow-sm hover:shadow-md transition-shadow">
+    <img src="assets/img/bebida2.png" alt="Product Image" class="w-full h-48 object-cover rounded-t-lg">
+    <h3 class="text-xl font-medium mt-2">Nombre del Producto</h3>
+    <p class="text-gray-600 mt-1">$Precio</p>
+    <button class="mt-2 w-full bg-primary text-white py-1 rounded-md">Agregar al carrito</button>
+</div> -->

@@ -1,0 +1,81 @@
+<!-- <h2 mat-dialog-title>Proceso de Pago</h2>
+
+<mat-dialog-content class="space-y-4">
+  <p>Aquí irá el contenido del paso actual (dirección, pago, resumen).</p>
+</mat-dialog-content>
+
+<mat-dialog-actions align="center">
+  <button mat-button (click)="cerrar()">Cancelar</button>
+  <button mat-flat-button color="primary">Continuar</button>
+</mat-dialog-actions> -->
+<div
+    class="bg-background rounded-lg w-full h-full lg:h-auto lg:w-96 max-w-2xl shadow-xl relative flex flex-col items-center pb-8">
+
+    <div class="bg-secondary text-white p-4 rounded-t-lg w-full">
+
+        <button (click)="cerrar()" class="absolute top-2 right-4 text-white hover:text-gray-800 text-2xl font-bold">
+            ×
+        </button>
+
+        <div class="flex items-center justify-center gap-x-2 bg-secondary px-2 py-1 h-20">
+        </div>
+
+    </div>
+
+    <div class="flex items-center justify-center h-44 w-40 bg-primary rounded-full -mt-24">
+        <img src="assets/img/bebida1.png" class="w-24 h-36" alt="bebida">
+    </div>
+
+    <div class="flex flex-col items-center justify-center gap-y-6 mt-2 pr-2 pl-2">
+
+        <span class="text-text font-semibold">Moka de menta</span>
+
+        <span class="text-subtext text-center text-sm px-6">
+            Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit. Phasellus pharetra erat at ex aliquet maximus. Pellentesque a dui a enim vestibulum semper quis eget
+            felis.
+        </span>
+
+        <div class="flex flex-row items-center justify-between text-center w-full px-8">
+            <span class="border-primary border rounded-r text-subtext flex-1 rounded-full text-sm py-1 px-4 cursor-pointer">
+                Personaliza
+            </span>
+            <span class="bg-primary rounded-l text-white flex-1 rounded-full text-sm py-1 px-4 cursor-pointer">
+                Extras
+            </span>
+        </div>
+
+
+        <div class="flex flex-col gap-2 w-full px-8">
+            <span>Leche</span>
+            <app-slider-item [elementos]="elementos" />
+            <span>Presentacion</span>
+            <app-slider-item [elementos]="elementosPresentacion"/>
+        </div>
+
+    </div>
+
+    <div class="flex flex-col items-center mt-5">
+
+        <div class="flex flex-row items-center justify-between gap-x-6 mt-4 px-4">
+
+            <div class="flex items-center gap-3">
+                <button class="bg-gray-200 px-2 py-1 rounded-full text-sm leading-none items-center">-</button>
+                <span class="text-sm">1</span>
+                <button class="bg-gray-200 px-2 py-1 rounded-full text-sm leading-none items-center">+</button>
+            </div>
+
+            <div class="flex gap-x-2 items-center">
+                <span class="text-text font-semibold">Total:</span>
+                <span class="text-text text-lg">$50.00</span>
+            </div>
+
+        </div>
+
+        <button class="w-full bg-primary text-white py-2 rounded-md mt-4">
+            Añadir al carrito
+        </button>
+    </div>
+
+
+</div>

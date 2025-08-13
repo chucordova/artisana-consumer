@@ -1,0 +1,143 @@
+<!-- <h2 mat-dialog-title>Proceso de Pago</h2>
+
+<mat-dialog-content class="space-y-4">
+  <p>Aquí irá el contenido del paso actual (dirección, pago, resumen).</p>
+</mat-dialog-content>
+
+<mat-dialog-actions align="center">
+  <button mat-button (click)="cerrar()">Cancelar</button>
+  <button mat-flat-button color="primary">Continuar</button>
+</mat-dialog-actions> -->
+<div class="bg-background rounded-lg min-w-[300px] lg:min-w-[500px] shadow-xl relative flex-col pb-8">
+
+
+  @if(!enviarADomicilio && !pasoPorEl) {
+  <div class="items-center justify-center flex flex-col gap-y-8 p-10">
+    <button (click)="cerrar()" class="absolute top-2 right-4 text-text hover:text-gray-800 text-2xl font-bold">
+      ×
+    </button>
+    <h3 class="text-text text-center text-2xl px-6 font-medium">¿Quieres que enviemos tu pedido o pasas por el?</h3>
+    <button (click)="pasoPorel()" class="text-white bg-accent px-4 py-2 rounded-lg w-full">Paso por el</button>
+    <button (click)="enviarADomicilio = true" class="text-white bg-primary px-4 py-2 rounded-lg w-full">A domocilio ( +
+      $30.00 )</button>
+  </div>
+  }
+
+  @if(enviarADomicilio || pasoPorEl) {
+  <div class="bg-secondary text-white p-4 rounded-t-lg items-center">
+
+    <button (click)="cerrar()" class="absolute top-2 right-4 text-white hover:text-gray-800 text-2xl font-bold">
+      ×
+    </button>
+
+    <h2 class="text-xl font-semibold text-center">Pago</h2>
+
+  </div>
+
+  <div class="flex flex-col items-center justify-center gap-y-4 mt-2 pr-2 pl-2">
+
+    <img src="assets/img/logo.png" class="w-36" alt="">
+
+    @if(enviarADomicilio && paso == 0){
+    <div class="flex flex-col gap-y-4 items-start mt-2 w-full px-4">
+
+      <div class="flex flex-col gap-y-2 w-full">
+        <label class="text-text">Nombre</label>
+        <input class="px-4 rounded-full py-1" type="text" placeholder="Nombre">
+      </div>
+
+      <div class="flex flex-col gap-y-2 w-full">
+        <label>Direccion</label>
+        <div class="flex flex-col gap-y-4 lg:flex-row gap-x-2">
+          <input class="px-2 rounded-full py-1" type="text" placeholder="Calle">
+          <input class="px-2 rounded-full py-1" type="text" placeholder="Colonia">
+        </div>
+        <div class="flex flex-col gap-y-4 lg:flex-row gap-x-2 w-full">
+          <div class="flex flex-col gap-y-2">
+            <label>No. interior</label>
+            <input class="px-2 rounded-full py-1" type="text" placeholder="No. interior">
+          </div>
+          <div class="flex flex-col gap-y-2">
+            <label>No. exterior</label>
+            <input class="px-2 rounded-full py-1" type="text" placeholder="No. exterior">
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-y-2 w-full">
+        <label>Telefono</label>
+        <input class="px-4 rounded-full py-1 w-full" type="text" placeholder="(627) - 123 - 4567">
+      </div>
+
+    </div>
+    }
+
+    @if(paso == 1){
+    <div class="flex flex-col gap-y-4 items-start mt-2">
+
+      <p class="text-text text-lg font-semibold">Realiza tu transeferencia</p>
+
+      <p class="text-text text-md font-normal items-start">Datos del negocio</p>
+
+      <p class="text-text text-md font-light flex flex-col">
+        <span>Nombre: </span> <span class="ml-2 text-subtext font-semibold">Artisana</span>
+      </p>
+
+      <p class="text-text text-md font-light flex flex-col">
+        <span>Tarjeta:</span>
+        <span class="text-subtext font-semibold ml-2 items-center gap-x-2 flex">
+          1234567890123456
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" class="w-5">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 0 1-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 0 1 1.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 0 0-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 0 1-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H9.75" />
+          </svg>
+        </span>
+      </p>
+
+      <p class="text-text text-md font-light flex flex-col">
+        <span>Referencia de pago:</span>
+        <span class="text-subtext font-semibold ml-2 items-center gap-x-2 flex">
+          12345678
+        </span>
+      </p>
+
+      <button class="bg-secondary text-white w-full py-2 rounded-full">Subir comprobante</button>
+
+    </div>
+    }
+
+    @if(paso == 2){
+    <div class="flex flex-col gap-y-4 items-center justify-center mt-2">
+      <h3>
+        Su pedido esta siendo procesado.
+      </h3>
+
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+        class="
+        text-primary items-center justify-center h-16 w-16">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+      </svg>
+
+      <p>¡Gracias por su preferencia!</p>
+    </div>
+    }
+
+
+    @if(paso < 2){ <div class="flex w-full justify-center items-baseline gap-x-28 lg:gap-x-40 mt-5 px-5 lg:px-0">
+
+      <button (click)="cerrar()" class="bg-accent text-white px-6 py-2 rounded-full items-center">Cancelar</button>
+
+      <button (click)="incrementarPaso()"
+        class="bg-secondary text-white px-6 py-2 rounded-full items-center ">Continuar</button>
+
+  </div>
+  }
+
+
+</div>
+}
+
+
+</div>

@@ -1,0 +1,25 @@
+.slider-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 1.5rem;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .slider-item {
+    width: 220px;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    border: 2px solid #ccc;
+    border-radius: 12px;
+    background-color: #fafafa;
+  }
+  
+  button {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+  
