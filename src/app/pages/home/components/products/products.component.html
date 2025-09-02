@@ -2,9 +2,13 @@
 
     <div class="flex flex-row w-full items-center gap-x-4">
         <input class="border border-gray-300 rounded-full px-4 py-2 h-auto w-full" type="text" value=""
-            placeholder="Buscar producto">
+            placeholder="Buscar producto"
+            [(ngModel)]="productoABuscar"
+            (ngModelChange)="buscarProductos()"
+            (keyup)="buscarProductos()">
 
-        <button class="rounded-full bg-primary text-white text-lg px-6 py-2">
+        <button class="rounded-full bg-primary text-white text-lg px-6 py-2"
+        (click)="buscarProductos()">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -17,100 +21,96 @@
 
         <div class="flex flex-wrap items-center gap-2 sm:gap-4">
             <span class="w-full sm:w-auto text-text text-md 2xl:text-lg">Categorías:</span>
-          
-            <span
-              class="flex items-center gap-x-2 px-4 py-1 bg-primary text-white rounded-full cursor-pointer text-sm sm:text-base">
-              Todos
+
+            <span class="flex items-center gap-x-2 px-4 py-2 rounded-full cursor-pointer text-sm sm:text-base"
+                (click)="getProductosPorCategoria('Todos')"
+                [ngClass]="{'bg-primary text-white': categoriaSeleccionada==='Todos', 'bg-gray-200 text-subtext': categoriaSeleccionada!=='Todos'}">
+                Todos
             </span>
-          
+
             <span
-              class="flex items-center gap-x-2 px-4 py-1 bg-gray-200 text-subtext rounded-full cursor-pointer text-sm sm:text-base">
-              <img class="w-6 h-6 sm:w-8 sm:h-8" src="assets/img/cafe.svg" alt="img_cafe" />
-              Cafés
+                class="flex items-center gap-x-2 px-4 py-1 bg-gray-200 text-subtext rounded-full cursor-pointer text-sm sm:text-base"
+                (click)="getProductosPorCategoria('Cafes')"
+                [ngClass]="{'bg-primary text-white': categoriaSeleccionada==='Cafes', 'bg-gray-200 text-subtext': categoriaSeleccionada!=='Cafes'}">
+                <img class="w-6 h-6 sm:w-8 sm:h-8" src="assets/img/cafe.svg" alt="img_cafe" />
+                Cafés
             </span>
-          
+
             <span
-              class="flex items-center gap-x-2 px-4 py-1 bg-gray-200 text-subtext rounded-full cursor-pointer text-sm sm:text-base">
-              <img class="w-6 h-6 sm:w-8 sm:h-8" src="assets/img/late.svg" alt="img_late" />
-              Lattes
+                class="flex items-center gap-x-2 px-4 py-1 bg-gray-200 text-subtext rounded-full cursor-pointer text-sm sm:text-base"
+                (click)="getProductosPorCategoria('Latte')"
+                [ngClass]="{'bg-primary text-white': categoriaSeleccionada==='Latte', 'bg-gray-200 text-subtext': categoriaSeleccionada!=='Latte'}">
+                <img class="w-6 h-6 sm:w-8 sm:h-8" src="assets/img/late.svg" alt="img_late" />
+                Lattes
             </span>
-          
+
             <span
-              class="flex items-center gap-x-2 px-4 py-1 bg-gray-200 text-subtext rounded-full cursor-pointer text-sm sm:text-base">
-              <img class="w-6 h-6 sm:w-8 sm:h-8" src="assets/img/te.svg" alt="img_te" />
-              Té
+                class="flex items-center gap-x-2 px-4 py-1 bg-gray-200 text-subtext rounded-full cursor-pointer text-sm sm:text-base"
+                (click)="getProductosPorCategoria('Te')"
+                [ngClass]="{'bg-primary text-white': categoriaSeleccionada==='Te', 'bg-gray-200 text-subtext': categoriaSeleccionada!=='Te'}">
+                <img class="w-6 h-6 sm:w-8 sm:h-8" src="assets/img/te.svg" alt="img_te" />
+                Té
             </span>
-          
+
             <span
-              class="flex items-center gap-x-2 px-4 py-1 bg-gray-200 text-subtext rounded-full cursor-pointer text-sm sm:text-base">
-              <img class="w-6 h-6 sm:w-8 sm:h-8" src="assets/img/tisana.svg" alt="img_tisana" />
-              Tisanas
+                class="flex items-center gap-x-2 px-4 py-1 bg-gray-200 text-subtext rounded-full cursor-pointer text-sm sm:text-base"
+                (click)="getProductosPorCategoria('Tisanas')"
+                [ngClass]="{'bg-primary text-white': categoriaSeleccionada==='Tisanas', 'bg-gray-200 text-subtext': categoriaSeleccionada!=='Tisanas'}">
+                <img class="w-6 h-6 sm:w-8 sm:h-8" src="assets/img/tisana.svg" alt="img_tisana" />
+                Tisanas
             </span>
-          </div>
-          
+
+            <span
+                class="flex items-center gap-x-2 px-4 py-2 bg-gray-200 text-subtext rounded-full cursor-pointer text-sm sm:text-base"
+                (click)="getProductosPorCategoria('Nieve')"
+                [ngClass]="{'bg-primary text-white': categoriaSeleccionada==='Nieve', 'bg-gray-200 text-subtext': categoriaSeleccionada!=='Nieve'}">
+                <svg class="text-gray-700 w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <!-- Bola de nieve -->
+                    <circle cx="12" cy="7" r="4" />
+
+                    <!-- Cono -->
+                    <path d="M8 11l4 10 4-10z" />
+
+                    <!-- Líneas decorativas del cono (barquillo) -->
+                    <path d="M10 15l4-2" />
+                    <path d="M11 18l2-1" />
+                </svg>
+                Nieve
+            </span>
+        </div>
+
 
         <div class="grid grid-cols-1 2xl:grid-cols-2 gap-4">
-            <!-- Product Card Example -->
-            <div (click)="abrirProducto()" class="w-full h-28 xl:h-48 border rounded-lg bg-white items-center flex flex-row gap-x-4 cursor-pointer">
+            <div *ngFor="let producto of productos; let i = index" (click)="abrirProducto(producto)"
+                class="w-full h-28 xl:h-48 border rounded-lg bg-white items-center flex flex-row gap-x-4 cursor-pointer">
 
                 <div
                     class="h-24 w-24 xl:w-40 xl:h-40 ml-2 xl:ml-5 bg-primary rounded-lg items-center justify-center flex">
-                    <img src="assets/img/bebida1.png" alt="Product Image" class="w-16 h-20 xl:w-24 xl:h-36">
+                    <img [src]="producto.imagen" alt="Product Image" class="w-16 h-20 xl:w-24 xl:h-36 object-cover">
                 </div>
 
                 <div class="flex flex-col gap-y-4 xl:gap-y-6 2xl:gap-y-8 flex-1 h-24 xl:h-36 2xl:h-40">
-                    <h3 class="text-md 2xl:text-lg font-normal text-subtext">Nombre del Producto</h3>
-                    <p class="text-text text-lg 2xl:text-xl">$Precio</p>
+                    <h3 class="text-md 2xl:text-lg font-normal text-subtext">{{ producto.nombre }}</h3>
+                    <p class="text-text text-lg 2xl:text-xl">${{ producto.precio }}</p>
                 </div>
 
                 <div class="h-24 xl:h-36 2xl:h-40 flex flex-col gap-y-1 2xl:gap-y-10 mr-2 2xl:mr-5">
                     <span class="text-text justify-end flex h-full">
+                        <!-- ícono -->
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="size-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z" />
                         </svg>
                     </span>
-
                     <span class="px-4 py-1 bg-primary text-white rounded-full">
-                        Frappe
+                        {{ producto.categoria }}
                     </span>
-
                 </div>
-
             </div>
-
-            <div  (click)="abrirProducto()" class="w-full h-28 xl:h-48 border rounded-lg bg-white items-center flex flex-row gap-x-4 cursor-pointer">
-
-                <div
-                    class="h-24 w-24 xl:w-40 xl:h-40 ml-2 xl:ml-5 bg-primary rounded-lg items-center justify-center flex">
-                    <img src="assets/img/bebida1.png" alt="Product Image" class="w-16 h-20 xl:w-24 xl:h-36">
-                </div>
-
-                <div class="flex flex-col gap-y-4 xl:gap-y-6 2xl:gap-y-8 flex-1 h-24 xl:h-36 2xl:h-40">
-                    <h3 class="text-md 2xl:text-lg font-normal text-subtext">Nombre del Producto</h3>
-                    <p class="text-text text-lg 2xl:text-xl">$Precio</p>
-                </div>
-
-                <div class="h-24 xl:h-36 2xl:h-40 flex flex-col gap-y-1 2xl:gap-y-10 mr-2 2xl:mr-5">
-                    <span class="text-text justify-end flex h-full">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z" />
-                        </svg>
-                    </span>
-
-                    <span class="px-4 py-1 bg-primary text-white rounded-full">
-                        Frappe
-                    </span>
-
-                </div>
-
-            </div>
-
-            <!-- Repeat product cards as needed -->
         </div>
+
 
     </div>
     <!-- <div class="border rounded-lg p-4 bg-white shadow-sm hover:shadow-md transition-shadow">

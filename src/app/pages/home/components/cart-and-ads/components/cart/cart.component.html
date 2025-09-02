@@ -34,35 +34,20 @@
     <!-- Productos -->
     <div [ngClass]="{'hidden lg:inline-flex': !mostrarCarrito}" class="flex flex-1 flex-col gap-3 pt-1">
         <!-- Item -->
-        <div class="border rounded-xl p-3 flex items-center gap-3">
-            <img src="assets/img/bebida1.png" alt="Producto" class="w-10 h-10 xl:w-12 xl:h-12 rounded-md" />
+        <div class="border rounded-xl p-3 flex items-center gap-3"
+        *ngFor="let producto of productosEnCarrito">
+            <img src={{producto.imagen}} alt="Producto" class="w-10 h-10 xl:w-12 xl:h-12 rounded-md" />
             <div class="flex-1">
-                <p class="text-xs xl:text-sm font-normal">Moka de menta</p>
-                <p class="text-gray-600">$85.00</p>
+                <p class="text-xs xl:text-sm font-normal break-words">{{producto.nombre}}</p>
+                <p class="text-gray-600">${{producto.precioTotal}}</p>
             </div>
             <div class="flex items-center gap-3">
                 <button class="bg-gray-200 px-2 py-1 rounded-full text-sm leading-none items-center">-</button>
-                <span class="text-sm">1</span>
-                <button class="bg-gray-200 px-2 py-1 rounded-full text-sm leading-none items-center">+</button>
-            </div>
-        </div>
-
-        <!-- Repetir para más productos -->
-        <div class="border rounded-xl p-3 flex items-center gap-3">
-            <img src="assets/img/bebida1.png" alt="Producto" class="w-10 h-10 xl:w-12 xl:h-12 rounded-md" />
-            <div class="flex-1">
-                <p class="text-xs xl:text-sm font-normal">Moka de menta</p>
-                <p class="text-gray-600">$85.00</p>
-            </div>
-            <div class="flex items-center gap-3">
-                <button class="bg-gray-200 px-2 py-1 rounded-full text-sm leading-none items-center">-</button>
-                <span class="text-sm">1</span>
+                <span class="text-sm">{{producto.cantidad}}</span>
                 <button class="bg-gray-200 px-2 py-1 rounded-full text-sm leading-none items-center">+</button>
             </div>
         </div>
     </div>
-
-
 
     <!-- Footer -->
     <div class="flex items-center justify-between border rounded-lg bg-gray-300 px-4 py-2">
@@ -75,7 +60,7 @@
                 </svg>
                 10 min aprox.
             </span>
-            <span class="text-accent text-xl 2xl:text-xl font-bold">$15.00</span>
+            <span class="text-accent text-xl 2xl:text-xl font-bold">${{totalGeneral}}</span>
         </div>
         <div class="flex items-center 2xl:items-start">
             <button (click)="abrirCheckout()"

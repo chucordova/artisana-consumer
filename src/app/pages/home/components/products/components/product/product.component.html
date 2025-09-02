@@ -23,17 +23,15 @@
     </div>
 
     <div class="flex items-center justify-center h-44 w-40 bg-primary rounded-full -mt-24">
-        <img src="assets/img/bebida1.png" class="w-24 h-36" alt="bebida">
+        <img src={{producto.imagen}} class="w-24 h-36" alt="bebida">
     </div>
 
     <div class="flex flex-col items-center justify-center gap-y-6 mt-2 pr-2 pl-2">
 
-        <span class="text-text font-semibold">Moka de menta</span>
+        <span class="text-text font-semibold">{{producto.nombre}}</span>
 
         <span class="text-subtext text-center text-sm px-6">
-            Lorem ipsum dolor sit amet, consectetur adipiscing
-            elit. Phasellus pharetra erat at ex aliquet maximus. Pellentesque a dui a enim vestibulum semper quis eget
-            felis.
+            {{producto.descripcion}}
         </span>
 
         <div class="flex flex-row items-center justify-between text-center w-full px-8">
@@ -46,12 +44,29 @@
         </div>
 
 
-        <div class="flex flex-col gap-2 w-full px-8">
-            <span>Leche</span>
-            <app-slider-item [elementos]="elementos" />
+        <div class="flex flex-col gap-2 w-full px-8"
+        *ngIf="presentaciones.length > 0">
             <span>Presentacion</span>
-            <app-slider-item [elementos]="elementosPresentacion"/>
+            <app-slider-item [elementos]="presentaciones" (change)="onPresentacionChange($event)"/>
         </div>
+
+        <div class="flex flex-col gap-2 w-full px-8"
+        *ngIf="leche.length > 0">
+            <span>Leche</span>
+            <app-slider-item [elementos]="leche" (change)="onLecheChange($event)"/>
+        </div>
+
+        <div class="flex flex-col gap-2 w-full px-8"
+        *ngIf="cubierta.length > 0">
+            <span>Cubierta</span>
+            <app-slider-item [elementos]="cubierta" (change)="onCubiertaChange($event)"/>
+        </div>
+
+        <div class="flex flex-col gap-2 w-full px-8"
+        *ngIf="endulzante.length > 0">
+            <span>Endulzante</span>
+            <app-slider-item [elementos]="endulzante" (change)="onEndulzanteChange($event)"/>
+        </div> 
 
     </div>
 
@@ -60,19 +75,22 @@
         <div class="flex flex-row items-center justify-between gap-x-6 mt-4 px-4">
 
             <div class="flex items-center gap-3">
-                <button class="bg-gray-200 px-2 py-1 rounded-full text-sm leading-none items-center">-</button>
-                <span class="text-sm">1</span>
-                <button class="bg-gray-200 px-2 py-1 rounded-full text-sm leading-none items-center">+</button>
+                <button class="bg-gray-200 px-2 py-1 rounded-full text-sm leading-none items-center"
+                (click)="decrementarCantidad()">-</button>
+                <span class="text-sm">{{cantidadProductos}}</span>
+                <button class="bg-gray-200 px-2 py-1 rounded-full text-sm leading-none items-center"
+                (click)="incrementarCantidad()">+</button>
             </div>
 
             <div class="flex gap-x-2 items-center">
                 <span class="text-text font-semibold">Total:</span>
-                <span class="text-text text-lg">$50.00</span>
+                <span class="text-text text-lg">${{precioTotal}}</span>
             </div>
 
         </div>
 
-        <button class="w-full bg-primary text-white py-2 rounded-md mt-4">
+        <button class="w-full bg-primary text-white py-2 rounded-md mt-4"
+        (click)="agregarAlCarrito()">
             Añadir al carrito
         </button>
     </div>
